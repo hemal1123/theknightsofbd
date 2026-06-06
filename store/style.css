@@ -341,10 +341,13 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
     color: #a0a0c0;
+    transition: 0.3s all ease-in-out;
 }
 
 .close-modal:hover {
     color: #ff0080;
+    transform: rotate(360deg);
+    scale: 1.8;
 }
 
 .payment-options {
@@ -636,7 +639,6 @@ body {
     width: 100%;
 }
 
-/* Toast Notification Colors */
 .notification-toast.success {
     background: linear-gradient(135deg, #00ff88, #00a884);
 }
@@ -647,4 +649,361 @@ body {
 
 .notification-toast.info {
     background: linear-gradient(135deg, #00e1ff, #6c5ce7);
+}
+
+/* Discord Section - Payment Instructions এর ভিতরে */
+.discord-section {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #5865F2, #404EED);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.discord-link-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.discord-link-box i {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.discord-link-box span {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.discord-invite-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.75rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 10px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.discord-invite-link:hover {
+    background: rgba(0, 0, 0, 0.5);
+    text-decoration: underline;
+}
+
+/* ======================================== */
+/* SCROLLABLE MODAL & COMPACT DESIGN FIXES  */
+/* ======================================== */
+
+/* Make modal scrollable - prevents overflow on small screens */
+.modal-content {
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+/* Custom scrollbar for modal (matches your cyan theme) */
+.modal-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 225, 255, 0.1);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #00e1ff;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #ff0080;
+}
+
+/* Compact payment instructions scroll */
+.payment-instructions {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 0.8rem;
+}
+
+/* Custom scrollbar for payment instructions */
+.payment-instructions::-webkit-scrollbar {
+    width: 4px;
+}
+
+.payment-instructions::-webkit-scrollbar-track {
+    background: rgba(0, 225, 255, 0.1);
+    border-radius: 10px;
+}
+
+.payment-instructions::-webkit-scrollbar-thumb {
+    background: #6c5ce7;
+    border-radius: 10px;
+}
+
+/* Discord Support Button - matches your design */
+.discord-support-btn {
+    background: linear-gradient(135deg, #5865F2, #404EED);
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.discord-support-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+}
+
+.discord-support-btn i {
+    font-size: 1.2rem;
+}
+
+/* Compact form elements inside modal */
+.purchase-details {
+    margin-bottom: 0.8rem;
+}
+
+.purchase-details p {
+    font-size: 0.9rem;
+}
+
+.payment-options h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.payment-option {
+    padding: 8px;
+    margin: 0.4rem 0;
+    font-size: 0.85rem;
+}
+
+/* Compact instruction card (for bKash/Nagad instructions) */
+.payment-instruction-card {
+    padding: 0.6rem;
+    margin: 0.5rem 0;
+}
+
+.payment-instruction-card h4 {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.merchant-info {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.merchant-info p {
+    margin: 3px 0;
+    font-size: 0.75rem;
+}
+
+.highlight {
+    font-size: 0.7rem;
+}
+
+.steps {
+    margin: 0.5rem 0;
+}
+
+.steps p {
+    margin: 4px 0;
+    font-size: 0.7rem;
+}
+
+/* Compact warning box */
+.warning {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+}
+
+/* Order summary compact */
+.order-summary {
+    padding: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.order-summary p {
+    font-size: 0.8rem;
+}
+
+.order-summary hr {
+    margin: 0.5rem 0;
+}
+
+.confirm-payment-btn {
+    padding: 8px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+/* Confirmation modal compact */
+.confirmation-content {
+    max-width: 350px;
+    padding: 1.2rem;
+}
+
+.confirmation-icon i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.confirmation-details {
+    padding: 0.6rem;
+    margin: 0.8rem 0;
+}
+
+.confirmation-details p {
+    font-size: 0.8rem;
+    margin: 3px 0;
+}
+
+.discord-link-box {
+    padding: 8px;
+    margin: 10px 0;
+}
+
+.discord-link-box a {
+    font-size: 0.75rem;
+}
+
+.close-confirm-btn {
+    padding: 8px;
+    font-size: 0.8rem;
+}
+
+/* Make trust section slightly more compact on mobile */
+@media (max-width: 768px) {
+    .trust-card {
+        min-width: 130px;
+        padding: 0.6rem;
+    }
+    
+    .trust-card i {
+        font-size: 1.5rem;
+    }
+    
+    .trust-card h4 {
+        font-size: 0.7rem;
+    }
+    
+    .trust-card p {
+        font-size: 0.55rem;
+    }
+    
+    /* Smaller store cards on mobile */
+    .store-card {
+        padding: 0.8rem;
+    }
+    
+    .coin-amount, .voucher-amount {
+        font-size: 1.2rem;
+    }
+    
+    .price-tag {
+        font-size: 0.7rem;
+        margin: 0.5rem 0;
+    }
+    
+    .buy-btn {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+    }
+    
+    /* Smaller rank cards */
+    .rank-card {
+        padding: 0.8rem;
+    }
+    
+    .rank-card i {
+        font-size: 1.8rem;
+    }
+    
+    .rank-card h3 {
+        font-size: 0.8rem;
+    }
+    
+    /* Smaller header */
+    .store-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .store-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .store-header p {
+        font-size: 0.8rem;
+    }
+    
+    /* Smaller category title */
+    .category-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Compact payment footer */
+    .payment-footer {
+        padding: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .payment-methods {
+        gap: 0.8rem;
+    }
+    
+    .payment-methods span {
+        padding: 3px 8px;
+        font-size: 0.65rem;
+    }
+    
+    .secure-text, .delivery-text {
+        font-size: 0.6rem;
+    }
+}
+
+/* Extra small devices (480px and below) */
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1rem;
+        max-width: 95%;
+    }
+    
+    .payment-option {
+        padding: 6px;
+        font-size: 0.75rem;
+    }
+    
+    .discord-support-btn {
+        padding: 6px;
+        font-size: 0.7rem;
+    }
+    
+    .confirm-payment-btn {
+        padding: 6px;
+        font-size: 0.7rem;
+    }
+    
+    .close-confirm-btn {
+        padding: 6px;
+        font-size: 0.7rem;
+    }
 }
