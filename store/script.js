@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (method === 'card') {
             instructions = `
                 <div class="payment-instruction-card">
-                    <div class="warning">💳 Card payment coming soon! Please use bKash or Nagad.</div>
+                    <div class="warning">💳 Card payment coming soon! Please use bKash or Nagad.<br> OR Go to Discord For Payment</div>
                     <div class="discord-section">
                         <div class="discord-link-box">
                             <i class="fab fa-discord"></i>
