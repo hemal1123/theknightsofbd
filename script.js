@@ -1,5 +1,5 @@
 // ============================================
-// THE KNIGHT'S OF BD - COMPLETE WEBSITE SCRIPT
+// THE KNIGHT'S OF BD - UI EFFECTS ONLY
 // ============================================
 
 // Server Configuration
@@ -48,7 +48,7 @@ function initLoadingScreen() {
 }
 
 // ====================
-// FLOATING COPY BUTTON (Top Left Corner)
+// FLOATING COPY BUTTON
 // ====================
 function initFloatingCopyButton() {
     floatingCopyBtn = document.getElementById('floatingCopyBtn');
@@ -77,25 +77,22 @@ async function copyMainIP() {
             document.body.removeChild(textArea);
         }
         
-        // Show the copy notification
         showCopyNotification();
         
-        // Vibrate on mobile
         if (navigator.vibrate) {
             navigator.vibrate(100);
         }
         
     } catch (err) {
-        showNotification('Copy Failed', 'Please copy manually: ' + ip, 'error');
+        console.log('Copy failed');
     }
 }
 
 // ====================
-// WELCOME NOTIFICATION (Blue to Cyan)
+// NOTIFICATIONS
 // ====================
 function showWelcomeNotification() {
     const container = document.getElementById('notificationContainer');
-    
     if (!container) return;
     
     const toast = document.createElement('div');
@@ -133,12 +130,8 @@ function showWelcomeNotification() {
     }, 4000);
 }
 
-// ====================
-// COPY NOTIFICATION (Cyan to Purple to Pink)
-// ====================
 function showCopyNotification() {
     const container = document.getElementById('notificationContainer');
-    
     if (!container) return;
     
     const toast = document.createElement('div');
@@ -158,53 +151,6 @@ function showCopyNotification() {
         <div class="toast-progress">
             <div class="toast-progress-bar"></div>
         </div>
-    `;
-    
-    container.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.classList.add('show');
-    }, 10);
-    
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => {
-            if (toast.parentNode === container) {
-                container.removeChild(toast);
-            }
-        }, 300);
-    }, 4000);
-}
-
-// ====================
-// REGULAR NOTIFICATION (Fallback)
-// ====================
-function showNotification(title, message, type = 'info') {
-    const container = document.getElementById('notificationContainer');
-    
-    if (!container) return;
-    
-    const toast = document.createElement('div');
-    toast.className = `toast-notification toast-${type}`;
-    
-    const icons = {
-        success: 'fa-check-circle',
-        error: 'fa-exclamation-triangle',
-        info: 'fa-info-circle',
-        warning: 'fa-exclamation-circle'
-    };
-    
-    toast.innerHTML = `
-        <div class="toast-icon">
-            <i class="fas ${icons[type] || 'fa-bell'}"></i>
-        </div>
-        <div class="toast-content">
-            <div class="toast-title">${title}</div>
-            <div class="toast-message">${message}</div>
-        </div>
-        <button class="toast-close" onclick="this.closest('.toast-notification').remove()">
-            <i class="fas fa-times"></i>
-        </button>
     `;
     
     container.appendChild(toast);
@@ -303,7 +249,7 @@ async function copyToClipboard(text) {
         }
         
     } catch (err) {
-        showNotification('Copy Failed', 'Please copy manually', 'error');
+        console.log('Copy failed');
     }
 }
 
@@ -315,8 +261,6 @@ function initDiscordButton() {
     
     if (discordBtn) {
         discordBtn.addEventListener('click', () => {
-            showNotification('Opening Discord...', 'Join our amazing community! 🎉', 'info');
-            
             setTimeout(() => {
                 window.open(SERVER_CONFIG.discordLink, '_blank');
             }, 500);
@@ -388,7 +332,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ====================
-// ADD PARTICLES (Lightweight)
+// ADD PARTICLES
 // ====================
 function createParticles() {
     const particlesContainer = document.createElement('div');
