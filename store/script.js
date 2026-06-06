@@ -1,15 +1,40 @@
-// Store Script
+// Store Script with Manual Payment System (bKash/Nagad)
+
 document.addEventListener('DOMContentLoaded', () => {
     const buyBtns = document.querySelectorAll('.buy-btn');
     const modal = document.getElementById('purchaseModal');
+    const confirmationModal = document.getElementById('confirmationModal');
     const closeModal = document.querySelector('.close-modal');
+    const closeConfirmationModal = document.getElementById('closeConfirmationModal');
+    const closeConfirmBtn = document.getElementById('closeConfirmBtn');
     const modalItemName = document.getElementById('modalItemName');
     const modalItemPrice = document.getElementById('modalItemPrice');
     const paymentInstructions = document.getElementById('paymentInstructions');
+    const orderSummary = document.getElementById('orderSummary');
+    const orderIdSpan = document.getElementById('orderId');
+    const confirmOrderId = document.getElementById('confirmOrderId');
+    const confirmItem = document.getElementById('confirmItem');
+    const confirmAmount = document.getElementById('confirmAmount');
     const notification = document.getElementById('notificationToast');
 
     let currentItem = null;
     let currentPrice = null;
+    let currentOrderId = null;
+
+    // Generate random Order ID
+    function generateOrderId() {
+        const prefix = 'KBD';
+        const timestamp = Date.now().toString().slice(-8);
+        const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        return `${prefix}${timestamp}${random}`;
+    }
+
+    // Save order to localStorage
+    function saveOrder(orderData) {
+        let orders = JSON.parse(localStorage.getItem('knight_orders') || '[]');
+        orders.push(orderData);
+        localStorage.setItem('knight_orders', JSON.stringify(orders));
+    }
 
     // Buy button click
     buyBtns.forEach(btn => {
@@ -18,16 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
             currentPrice = btn.getAttribute('data-price');
             modalItemName.textContent = currentItem;
             modalItemPrice.textContent = currentPrice;
+            orderSummary.style.display = 'none';
+            paymentInstructions.innerHTML = '';
             modal.style.display = 'flex';
         });
     });
 
-    // Close modal
-    if (closeModal) {
-        closeModal.onclick = () => modal.style.display = 'none';
-    }
+    // Close modals
+    if (closeModal) closeModal.onclick = () => modal.style.display = 'none';
+    if (closeConfirmationModal) closeConfirmationModal.onclick = () => confirmationModal.style.display = 'none';
+    if (closeConfirmBtn) closeConfirmBtn.onclick = () => confirmationModal.style.display = 'none';
+    
     window.onclick = (e) => {
         if (e.target === modal) modal.style.display = 'none';
+        if (e.target === confirmationModal) confirmationModal.style.display = 'none';
     };
 
     // Payment options
@@ -41,74 +70,129 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showPaymentInstructions(method) {
         let instructions = '';
+        let orderId = generateOrderId();
+        currentOrderId = orderId;
+        
         if (method === 'bkash') {
             instructions = `
-                <h4>📱 bKash Payment Instructions:</h4>
-                <p>1. Send money to: <strong>01XXXXXXXXX</strong></p>
-                <p>2. Amount: <strong>${currentPrice} TK</strong></p>
-                <p>3. Reference: <strong>KNIGHT_${currentItem.replace(/ /g, '_')}</strong></p>
-                <p>4. After payment, send transaction ID to Discord: <strong>@server_admin</strong></p>
-                <p>5. Your item will be delivered within <strong>30 seconds</strong>!</p>
-                <hr style="margin: 10px 0; border-color: rgba(0,225,255,0.3);">
-                <p style="color: #00e1ff;"><i class="fas fa-shield-alt"></i> Your transaction is secure & encrypted</p>
-                <p style="color: #ff0080; font-size: 0.7rem;"><i class="fas fa-clock"></i> Delivery Time: 30 seconds - 2 minutes</p>
+                <div class="payment-instruction-card">
+                    <h4><i class="fas fa-mobile-alt"></i> bKash Payment Instructions</h4>
+                    <div class="merchant-info">
+                        <p><strong>bKash Merchant Number:</strong> <span class="highlight">018XXXXXXXX</span></p>
+                        <p><strong>Reference:</strong> <span class="highlight">${orderId}</span></p>
+                        <p><strong>Amount:</strong> <span class="highlight">${currentPrice} TK</span></p>
+                    </div>
+                    <div class="steps">
+                        <p>📌 <strong>Step 1:</strong> Open bKash app → Send Money</p>
+                        <p>📌 <strong>Step 2:</strong> Enter merchant number: <strong>018XXXXXXXX</strong></p>
+                        <p>📌 <strong>Step 3:</strong> Enter amount: <strong>${currentPrice} TK</strong></p>
+                        <p>📌 <strong>Step 4:</strong> Enter reference: <strong>${orderId}</strong></p>
+                        <p>📌 <strong>Step 5:</strong> Enter your bKash PIN to confirm</p>
+                    </div>
+                    <div class="warning">
+                        <i class="fas fa-info-circle"></i>
+                        After successful payment, save the Transaction ID and send it to our Discord server.
+                    </div>
+                </div>
             `;
         } else if (method === 'nagad') {
             instructions = `
-                <h4>📱 Nagad Payment Instructions:</h4>
-                <p>1. Send money to: <strong>01314726844</strong></p>
-                <p>2. Amount: <strong>${currentPrice} TK</strong></p>
-                <p>3. Reference: <strong>KNIGHT_${currentItem.replace(/ /g, '_')}</strong></p>
-                <p>4. After payment, send transaction ID to Discord: <strong>@server_admin</strong></p>
-                <p>5. Your item will be delivered within <strong>30 seconds</strong>!</p>
-                <hr style="margin: 10px 0; border-color: rgba(0,225,255,0.3);">
-                <p style="color: #00e1ff;"><i class="fas fa-shield-alt"></i> Your transaction is secure & encrypted</p>
-                <p style="color: #ff0080; font-size: 0.7rem;"><i class="fas fa-clock"></i> Delivery Time: 30 seconds - 2 minutes</p>
+                <div class="payment-instruction-card">
+                    <h4><i class="fas fa-mobile-alt"></i> Nagad Payment Instructions</h4>
+                    <div class="merchant-info">
+                        <p><strong>Nagad Merchant Number:</strong> <span class="highlight">019XXXXXXXX</span></p>
+                        <p><strong>Reference:</strong> <span class="highlight">${orderId}</span></p>
+                        <p><strong>Amount:</strong> <span class="highlight">${currentPrice} TK</span></p>
+                    </div>
+                    <div class="steps">
+                        <p>📌 <strong>Step 1:</strong> Open Nagad app → Send Money</p>
+                        <p>📌 <strong>Step 2:</strong> Enter merchant number: <strong>019XXXXXXXX</strong></p>
+                        <p>📌 <strong>Step 3:</strong> Enter amount: <strong>${currentPrice} TK</strong></p>
+                        <p>📌 <strong>Step 4:</strong> Enter reference: <strong>${orderId}</strong></p>
+                        <p>📌 <strong>Step 5:</strong> Enter your Nagad PIN to confirm</p>
+                    </div>
+                    <div class="warning">
+                        <i class="fas fa-info-circle"></i>
+                        After successful payment, save the Transaction ID and send it to our Discord server.
+                    </div>
+                </div>
             `;
         } else if (method === 'card') {
             instructions = `
-                <h4>💳 Card Payment Instructions:</h4>
-                <p>You will be redirected to secure payment gateway.</p>
-                <button id="proceedCardBtn" style="background:#00e1ff; border:none; padding:10px; border-radius:8px; margin-top:10px; cursor:pointer; width:100%; font-weight:bold;">Proceed to Payment</button>
-                <p style="font-size:0.7rem; margin-top:10px;"><i class="fas fa-lock"></i> SSL Secure Gateway</p>
+                <div class="payment-instruction-card">
+                    <h4><i class="fab fa-cc-visa"></i> Card Payment</h4>
+                    <p>Card payment gateway coming soon!</p>
+                    <p>Currently please use bKash or Nagad.</p>
+                    <p class="highlight">You can also contact admin for alternative payment methods.</p>
+                </div>
             `;
-            setTimeout(() => {
-                const proceedBtn = document.getElementById('proceedCardBtn');
-                if (proceedBtn) {
-                    proceedBtn.onclick = () => {
-                        showNotification('Payment gateway coming soon! Please use bKash or Nagad for now.');
-                        modal.style.display = 'none';
-                    };
-                }
-            }, 100);
         } else if (method === 'paypal') {
+            const usdAmount = (currentPrice / 120).toFixed(2);
             instructions = `
-                <h4>💙 PayPal Payment Instructions:</h4>
-                <p>PayPal ID: <strong>paypal@theknightsofbd.com</strong></p>
-                <p>Amount: <strong>$${(currentPrice / 120).toFixed(2)} USD</strong></p>
-                <p>After payment, send screenshot to Discord: <strong>@server_admin</strong></p>
-                <p style="color: #00e1ff; margin-top:10px;"><i class="fab fa-paypal"></i> PayPal Buyer Protection included</p>
+                <div class="payment-instruction-card">
+                    <h4><i class="fab fa-paypal"></i> PayPal Payment</h4>
+                    <div class="merchant-info">
+                        <p><strong>PayPal Email:</strong> <span class="highlight">paypal@theknightsofbd.com</span></p>
+                        <p><strong>Amount:</strong> <span class="highlight">$${usdAmount} USD</span></p>
+                        <p><strong>Reference:</strong> <span class="highlight">${orderId}</span></p>
+                    </div>
+                    <div class="steps">
+                        <p>📌 Send payment to paypal@theknightsofbd.com</p>
+                        <p>📌 Include Order ID: ${orderId} in notes</p>
+                    </div>
+                </div>
             `;
-            setTimeout(() => {
-                showNotification(`Please send $${(currentPrice / 120).toFixed(2)} USD to paypal@theknightsofbd.com`);
-                modal.style.display = 'none';
-            }, 3000);
         }
-        paymentInstructions.innerHTML = instructions;
         
-        if (method !== 'card' && method !== 'paypal') {
-            setTimeout(() => {
-                showNotification(`Purchase request sent for ${currentItem}! Please complete payment and contact admin on Discord.`);
-                modal.style.display = 'none';
-            }, 4000);
-        }
+        paymentInstructions.innerHTML = instructions;
+        orderIdSpan.textContent = orderId;
+        orderSummary.style.display = 'block';
+        
+        // Scroll to instructions
+        paymentInstructions.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    function showNotification(message) {
+    // Confirm Payment Button
+    const confirmPaymentBtn = document.getElementById('confirmPaymentBtn');
+    if (confirmPaymentBtn) {
+        confirmPaymentBtn.onclick = () => {
+            if (!currentItem || !currentPrice || !currentOrderId) {
+                showNotification('Error: Order information missing!', 'error');
+                return;
+            }
+            
+            // Save order to localStorage
+            const orderData = {
+                orderId: currentOrderId,
+                item: currentItem,
+                amount: currentPrice,
+                date: new Date().toISOString(),
+                status: 'pending'
+            };
+            saveOrder(orderData);
+            
+            // Show confirmation modal
+            confirmOrderId.textContent = currentOrderId;
+            confirmItem.textContent = currentItem;
+            confirmAmount.textContent = currentPrice;
+            
+            modal.style.display = 'none';
+            confirmationModal.style.display = 'flex';
+            
+            showNotification(`Order #${currentOrderId} created! Please complete payment.`, 'success');
+        };
+    }
+
+    function showNotification(message, type = 'info') {
         notification.textContent = message;
+        notification.className = `notification-toast ${type}`;
         notification.classList.add('show');
         setTimeout(() => {
             notification.classList.remove('show');
-        }, 4000);
+        }, 5000);
     }
+    
+    // Discord button handler (already exists in main site)
+    console.log('✅ Store ready! Payment instructions with Order ID system active.');
+    console.log('📱 bKash & Nagad manual payment system active.');
 });

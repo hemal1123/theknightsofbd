@@ -510,3 +510,141 @@ body {
         blinkCursor 1.2s step-end infinite,
         rgbGlow 1s ease-in-out infinite alternate;
 }
+
+/* Payment Instruction Card */
+.payment-instruction-card {
+    background: rgba(0, 225, 255, 0.05);
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.merchant-info {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.8rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.merchant-info p {
+    margin: 5px 0;
+}
+
+.highlight {
+    color: #00e1ff;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+.steps {
+    margin: 1rem 0;
+}
+
+.steps p {
+    margin: 8px 0;
+    font-size: 0.85rem;
+}
+
+.warning {
+    background: rgba(255, 0, 128, 0.1);
+    border-left: 3px solid #ff0080;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+}
+
+.warning i {
+    color: #ff0080;
+    margin-right: 8px;
+}
+
+.order-summary {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 225, 255, 0.1);
+    border-radius: 10px;
+}
+
+.order-summary hr {
+    border-color: rgba(0, 225, 255, 0.3);
+    margin: 0.8rem 0;
+}
+
+.confirm-payment-btn {
+    background: linear-gradient(135deg, #00ff88, #00a884);
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    color: #0a0a1a;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.8rem;
+    transition: 0.3s;
+}
+
+.confirm-payment-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+}
+
+.confirmation-content {
+    text-align: center;
+    max-width: 400px;
+}
+
+.confirmation-icon i {
+    font-size: 4rem;
+    color: #00ff88;
+    margin-bottom: 1rem;
+}
+
+.confirmation-details {
+    background: rgba(0, 225, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: left;
+}
+
+.confirmation-details p {
+    margin: 5px 0;
+}
+
+.discord-info {
+    background: linear-gradient(135deg, #5865F2, #404EED);
+    padding: 0.8rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+}
+
+.discord-info i {
+    margin-right: 8px;
+}
+
+.close-confirm-btn {
+    background: linear-gradient(135deg, #00e1ff, #6c5ce7);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #0a0a1a;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Toast Notification Colors */
+.notification-toast.success {
+    background: linear-gradient(135deg, #00ff88, #00a884);
+}
+
+.notification-toast.error {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+}
+
+.notification-toast.info {
+    background: linear-gradient(135deg, #00e1ff, #6c5ce7);
+}
