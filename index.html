@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="The Knight's OF BD - Premium Minecraft Gaming Server">
+    <meta name="theme-color" content="#0a0a1a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>The Knight's OF BD | Minecraft Server</title>
+    <link rel="icon" type="image/x-icon" href="assets/KnightLOGO9.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="sword">
+                <div class="blade"></div>
+                <div class="hilt"></div>
+            </div>
+            <p>Loading The Knight's OF BD...</p>
+        </div>
+    </div>
+
+    <!-- MODERN NAVBAR -->
+    <nav class="knight-navbar" id="mainNavbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-logo">
+                    <img src="assets/KnightLOGO11.png" alt="Logo" class="nav-logo-img">
+                    <span class="nav-logo-text">THE KNIGHT'S OF BD</span>
+                </div>
+                
+                <a href="store" class="store-btn" id="storeBtn">
+                    <i class="fas fa-store"></i>
+                    <span>STORE</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="nav-right">
+                <button class="login-btn" id="loginBtn">
+                    <i class="fas fa-user"></i>
+                    <span>Login</span>
+                </button>
+                
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <img class="user-avatar" id="userAvatar" src="" alt="avatar">
+                    <span class="user-name" id="userName">Player</span>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Copy Button -->
+    <button class="floating-copy-btn" id="floatingCopyBtn">
+        <i class="fas fa-copy"></i>
+        <span>Click to Copy IP</span>
+    </button>
+
+    <!-- Hero Section -->
+    <main class="hero-section" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="main-title">
+                    <span class="title-gradient">Welcome To</span>
+                    <span class="title-outline">THE KNIGHT'S OF BD</span>
+                </h2>
+                <p class="tagline">Your Ultimate Premium Minecraft Gaming Experience</p>
+                
+                <div class="server-stats">
+                    <div class="stat"><i class="fas fa-users"></i><span>100+ Player Slots</span></div>
+                    <div class="stat"><i class="fas fa-server"></i><span>99.9% Uptime</span></div>
+                    <div class="stat"><i class="fas fa-bolt"></i><span>Zero Lag</span></div>
+                </div>
+            </div>
+            
+            <div class="hero-actions">
+                <button class="btn-primary" id="copyIpBtn"><i class="fas fa-copy"></i> Copy Server IP</button>
+                <button class="btn-secondary" id="discordBtn"><i class="fab fa-discord"></i> Join Discord</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Members Section -->
+    <section class="members-section" id="members">
+        <h2 class="section-title">👑 Server Legends 👑</h2>
+        <div class="members-grid">
+            <div class="member-card owner">
+                <div class="member-icon"><i class="fas fa-crown"></i></div>
+                <h3>Owner</h3>
+                <p class="member-name">Ahmad</p>
+                <p class="member-ign">⚡ IGN: <span>Slighter</span></p>
+                <span class="member-badge">👑 Supreme Leader</span>
+            </div>
+            <div class="member-card coowner">
+                <div class="member-icon"><i class="fas fa-star"></i></div>
+                <h3>Co-Owner</h3>
+                <p class="member-name">Ahmad</p>
+                <p class="member-ign">⭐ IGN: <span>Slighter</span></p>
+                <span class="member-badge">⚡ Right Hand</span>
+            </div>
+            <div class="member-card knight">
+                <div class="member-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>First Knight</h3>
+                <p class="member-name">Hana</p>
+                <p class="member-ign">⚔️ IGN: <span>NotJelly</span></p>
+                <span class="member-badge">🌟 The First Knight</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <h2 class="section-title">Server Features</h2>
+        <div class="features-grid">
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Anti-Cheat System</h3><p>Advanced protection ensuring fair gameplay</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-database"></i></div><h3>Daily Backups</h3><p>Your progress is safe with automated backups</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-mobile-alt"></i></div><h3>Cross-Platform</h3><p>Play on Java, Bedrock, or any compatible client</p></div>
+            <div class="feature-card"><div class="feature-icon"><i class="fas fa-heart"></i></div><h3>Active Community</h3><p>Join thousands of friendly players worldwide</p></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p class="server-ip-footer">💻 Java IP: theknightsofbd.mcsh.io:25565</p>
+                <p class="server-ip-footer">📱 Bedrock Ports: 19132 | 11772</p>
+            </div>
+            <div class="footer-credit"><p><i class="fas fa-code"></i> Made by <span class="highlight">Hemal Das</span></p><p>&copy; 2026 The Knight's OF BD</p></div>
+        </div>
+    </footer>
+    
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content login-modal-content">
+            <button class="close-modal" id="closeLoginModal">&times;</button>
+            <h2><i class="fas fa-user-shield"></i> Welcome to Knights of BD</h2>
+            <div class="login-tabs">
+                <button class="tab-btn active" id="loginTabBtn">🔐 Login</button>
+                <button class="tab-btn" id="registerTabBtn">📝 Register</button>
+            </div>
+            <form id="loginForm" class="auth-form active">
+                <input type="email" id="loginEmail" placeholder="Email Address" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="auth-submit">Login <i class="fas fa-arrow-right"></i></button>
+            </form>
+            <form id="registerForm" class="auth-form">
+                <input type="text" id="regUsername" placeholder="Username" required>
+                <input type="email" id="regEmail" placeholder="Email Address" required>
+                <input type="password" id="regPassword" placeholder="Password (min 6 characters)" required>
+                <button type="submit" class="auth-submit">Create Account <i class="fas fa-gem"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- IP Modal -->
+    <div class="modal" id="ipModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2><i class="fas fa-server"></i> Server Connection</h2>
+            <div class="ip-section"><h3><i class="fab fa-java"></i> Java Edition</h3><div class="ip-container"><code class="server-ip">theknightsofbd.mcsh.io:25565</code><button class="copy-btn" data-ip="theknightsofbd.mcsh.io:25565"><i class="fas fa-copy"></i> Copy</button></div></div>
+            <div class="ip-section"><h3><i class="fas fa-mobile-alt"></i> Bedrock Edition</h3><div class="ip-container"><code class="server-ip">theknightsofbd.mcsh.io</code><button class="copy-btn" data-ip="theknightsofbd.mcsh.io"><i class="fas fa-copy"></i> Copy IP</button></div><div class="port-info"><p><strong>Ports:</strong> 19132 or 11772</p></div></div>
+            <div class="version-info"><p><i class="fas fa-code-branch"></i> <strong>Supported Versions:</strong> 1.8 - 1.21.x</p></div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Firebase Config -->
+    <script type="module">
+        // Firebase SDK imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+        // Your Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAIUFhLZC21fM4-ouKpMWF1ByBtD5ix8KU",
+            authDomain: "the-knights-acc.firebaseapp.com",
+            projectId: "the-knights-acc",
+            storageBucket: "the-knights-acc.firebasestorage.app",
+            messagingSenderId: "223979026951",
+            appId: "1:223979026951:web:9f0e31cf6805e7ada588a2",
+            measurementId: "G-ZK5RGP712N"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        console.log('✅ Firebase Connected!');
+
+        // Notification function
+        function showNotification(title, message, type = 'info') {
+            const container = document.getElementById('notificationContainer');
+            if (!container) { alert(`${title}: ${message}`); return; }
+            
+            const toast = document.createElement('div');
+            toast.className = `toast-notification toast-${type}`;
+            const icons = { success: 'fa-check-circle', error: 'fa-exclamation-triangle', info: 'fa-info-circle', warning: 'fa-exclamation-circle' };
+            
+            toast.innerHTML = `
+                <div class="toast-icon"><i class="fas ${icons[type] || 'fa-bell'}"></i></div>
+                <div class="toast-content"><div class="toast-title">${title}</div><div class="toast-message">${message}</div></div>
+                <button class="toast-close" onclick="this.closest('.toast-notification').remove()"><i class="fas fa-times"></i></button>
+                <div class="toast-progress"><div class="toast-progress-bar"></div></div>
+            `;
+            
+            container.appendChild(toast);
+            setTimeout(() => toast.classList.add('show'), 10);
+            setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 300); }, 4000);
+        }
+
+        // DOM Elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginBtn = document.getElementById('loginBtn');
+            const loginModal = document.getElementById('loginModal');
+            const closeLoginModal = document.getElementById('closeLoginModal');
+            const loginTabBtn = document.getElementById('loginTabBtn');
+            const registerTabBtn = document.getElementById('registerTabBtn');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const userMenu = document.getElementById('userMenu');
+            const userName = document.getElementById('userName');
+            const userAvatar = document.getElementById('userAvatar');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const copyIpBtn = document.getElementById('copyIpBtn');
+            const ipModal = document.getElementById('ipModal');
+            const discordBtn = document.getElementById('discordBtn');
+            const floatingCopyBtn = document.getElementById('floatingCopyBtn');
+            const backToTop = document.getElementById('backToTop');
+
+            // Loading screen
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                setTimeout(() => {
+                    loadingScreen.classList.add('fade-out');
+                    setTimeout(() => loadingScreen.style.display = 'none', 500);
+                }, 2000);
+            }
+
+            // Copy IP function
+            async function copyIP(ip) {
+                try {
+                    await navigator.clipboard.writeText(ip);
+                    showNotification('✅ Copied!', `IP copied to clipboard!`, 'success');
+                    if (navigator.vibrate) navigator.vibrate(100);
+                } catch (err) {
+                    showNotification('❌ Failed', 'Please copy manually', 'error');
+                }
+            }
+
+            if (copyIpBtn) copyIpBtn.onclick = () => ipModal.classList.add('active');
+            if (floatingCopyBtn) floatingCopyBtn.onclick = () => copyIP('theknightsofbd.mcsh.io');
+
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.onclick = () => copyIP(btn.getAttribute('data-ip'));
+            });
+
+            if (discordBtn) {
+                discordBtn.onclick = () => {
+                    showNotification('Opening Discord', 'Join our community! 🎉', 'info');
+                    setTimeout(() => window.open('https://discord.gg/GU9426EpBM', '_blank'), 500);
+                };
+            }
+
+            if (backToTop) {
+                window.addEventListener('scroll', () => {
+                    backToTop.classList.toggle('visible', window.scrollY > 300);
+                });
+                backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Close modals
+            document.querySelectorAll('.close-modal').forEach(btn => {
+                btn.onclick = () => {
+                    if (loginModal) loginModal.classList.remove('active');
+                    if (ipModal) ipModal.classList.remove('active');
+                };
+            });
+            
+            window.onclick = (e) => {
+                if (e.target === loginModal) loginModal.classList.remove('active');
+                if (e.target === ipModal) ipModal.classList.remove('active');
+            };
+
+            if (loginBtn) loginBtn.onclick = () => loginModal.classList.add('active');
+            if (closeLoginModal) closeLoginModal.onclick = () => loginModal.classList.remove('active');
+
+            // Tab switching
+            if (loginTabBtn && registerTabBtn && loginForm && registerForm) {
+                loginTabBtn.onclick = () => {
+                    loginTabBtn.classList.add('active'); 
+                    registerTabBtn.classList.remove('active');
+                    loginForm.classList.add('active'); 
+                    registerForm.classList.remove('active');
+                };
+                registerTabBtn.onclick = () => {
+                    registerTabBtn.classList.add('active'); 
+                    loginTabBtn.classList.remove('active');
+                    registerForm.classList.add('active'); 
+                    loginForm.classList.remove('active');
+                };
+            }
+
+            // Register
+            if (registerForm) {
+                registerForm.onsubmit = async (e) => {
+                    e.preventDefault();
+                    const username = document.getElementById('regUsername')?.value;
+                    const email = document.getElementById('regEmail')?.value;
+                    const password = document.getElementById('regPassword')?.value;
+                    
+                    if (!username || !email || !password) {
+                        showNotification('Error', 'Please fill all fields!', 'error');
+                        return;
+                    }
+                    if (password.length < 6) {
+                        showNotification('Error', 'Password must be at least 6 characters!', 'error');
+                        return;
+                    }
+                    
+                    try {
+                        const userCred = await createUserWithEmailAndPassword(auth, email, password);
+                        showNotification('Welcome!', `✅ Account created, ${username}!`, 'success');
+                        loginModal.classList.remove('active');
+                        registerForm.reset();
+                    } catch (error) {
+                        let msg = error.code === 'auth/email-already-in-use' ? 'Email already registered!' : error.message;
+                        showNotification('Registration Failed', msg, 'error');
+                    }
+                };
+            }
+
+            // Login
+            if (loginForm) {
+                loginForm.onsubmit = async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail')?.value;
+                    const password = document.getElementById('loginPassword')?.value;
+                    
+                    if (!email || !password) {
+                        showNotification('Error', 'Please enter email and password!', 'error');
+                        return;
+                    }
+                    
+                    try {
+                        await signInWithEmailAndPassword(auth, email, password);
+                        showNotification('Welcome Back!', '✅ Login successful! ⚔️', 'success');
+                        loginModal.classList.remove('active');
+                        loginForm.reset();
+                    } catch (error) {
+                        let msg = error.code === 'auth/invalid-credential' ? 'Invalid email or password!' : error.message;
+                        showNotification('Login Failed', msg, 'error');
+                    }
+                };
+            }
+
+            // Logout
+            if (logoutBtn) {
+                logoutBtn.onclick = async () => {
+                    await signOut(auth);
+                    showNotification('Logged Out', '👋 See you soon!', 'info');
+                };
+            }
+
+            // Auth State Listener
+            onAuthStateChanged(auth, (user) => {
+                const loginBtnElement = document.getElementById('loginBtn');
+                const userMenuElement = document.getElementById('userMenu');
+                
+                if (user) {
+                    const displayName = user.email.split('@')[0];
+                    if (userName) userName.textContent = displayName;
+                    if (userAvatar) {
+                        userAvatar.src = `https://minotar.net/avatar/${encodeURIComponent(displayName)}/32`;
+                        userAvatar.onerror = function() {
+                            this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="%23333"/%3E%3Ccircle cx="50" cy="40" r="15" fill="%23666"/%3E%3Crect x="35" y="60" width="30" height="25" fill="%23666"/%3E%3C/svg%3E';
+                        };
+                    }
+                    if (userMenuElement) userMenuElement.style.display = 'flex';
+                    if (loginBtnElement) loginBtnElement.style.display = 'none';
+                } else {
+                    if (userMenuElement) userMenuElement.style.display = 'none';
+                    if (loginBtnElement) loginBtnElement.style.display = 'flex';
+                }
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
